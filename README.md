@@ -22,7 +22,7 @@ Planned and unplanned features of new service template.
 - [ ] Strongly typed configuration of schema
 - [ ] Dapper support for hot path queries
 
-## Error handling
+### Error handling
 - [ ] Global exception filter
 - [ ] Custom error types
 
