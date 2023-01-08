@@ -12,6 +12,8 @@ Planned and unplanned features of new service template.
 - [ ] Automatic correlation IDs on incoming
 - [ ] CORS setup
 - [ ] Elastic stack setup
+- [ ] Sample benchmark setup
+- [ ] Test datadog
  
 ### Internal application structure
 - [ ] Mediator based handlers
