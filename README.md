@@ -23,6 +23,7 @@ Planned and unplanned features of new service template.
 - [ ] Support for entity framework + migrations
 - [ ] Strongly typed configuration of schema
 - [ ] Dapper support for hot path queries
+- [ ] Event sourcing (eventstore)
 
 ### Error handling
 - [ ] Global exception filter
@@ -37,9 +38,11 @@ Planned and unplanned features of new service template.
 ### Async message handling
 - [ ] RabbitMQ support for messages
 - [ ] Deferred messages with RabbitMQ
+- [ ] Rabbit vs. Redis?
 
 ### Authentication and authorization
 - [ ] JWT support and validation
+- [ ] Refresh token support + invalidation
 
 ### Unit and integration testing
 - [ ] Database supported testing
