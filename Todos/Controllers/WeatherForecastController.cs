@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Shop.Controllers;
+namespace Todos.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
-    private static readonly string[] Summaries =
+    private static readonly string[] Summaries = new[]
     {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };

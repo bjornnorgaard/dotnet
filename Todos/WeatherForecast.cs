@@ -1,4 +1,4 @@
-namespace Shop;
+namespace Todos;
 
 public class WeatherForecast
 {
