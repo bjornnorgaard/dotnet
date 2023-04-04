@@ -14,6 +14,7 @@ Planned and unplanned features of new service template.
 - [ ] Elastic stack setup
 - [ ] Sample benchmark setup
 - [ ] Test datadog
+- [x] Healthchecks
  
 ### Internal application structure
 - [ ] Mediator based handlers
@@ -34,6 +35,7 @@ Planned and unplanned features of new service template.
 - [ ] OpenAPI contracts 
 - [ ] GraphQL contracts for frontend 
 - [ ] gRPC for inter-service communication
+- [x] OpenAPI swagger specfication
 
 ### Async message handling
 - [ ] RabbitMQ support for messages
