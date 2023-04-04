@@ -13,3 +13,5 @@ app.MapControllers();
 app.UseHealthChecks("/hc");
 
 app.Run();
+
+public partial class Program { } // For integration testing.
