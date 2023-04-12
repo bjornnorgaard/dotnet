@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  todos:
+    image: dotnet/todos
+    build:
+      context: .
+    ports:
+      - "5001:6001"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "changeme"
+    volumes:
+      - ./Volumes/postgres:/var/lib/postgresql/data

@@ -6,9 +6,9 @@ Planned and unplanned features of new service template.
 
 ### Diagnostics and logging
 - [ ] Logging middleware
-- [ ] Strongly typed configuration
+- [X] Strongly typed configuration
 - [ ] Configuration validation on startup (compile time maybe?)
-- [ ] Bind configuration by options
+- [X] Bind configuration by options
 - [ ] Automatic correlation IDs on incoming
 - [ ] CORS setup
 - [ ] Elastic stack setup
@@ -17,21 +17,21 @@ Planned and unplanned features of new service template.
 - [x] Healthchecks
  
 ### Internal application structure
-- [ ] Mediator based handlers
-- [ ] Separate command model validation
+- [X] Mediator based handlers
+- [X] Separate command model validation
 
 ### Database and schema
-- [ ] Support for entity framework + migrations
-- [ ] Strongly typed configuration of schema
+- [X] Support for entity framework + migrations
+- [X] Strongly typed configuration of schema
 - [ ] Dapper support for hot path queries
 - [ ] Event sourcing (eventstore)
 
 ### Error handling
-- [ ] Global exception filter
-- [ ] Custom error types
+- [X] Global exception filter
+- [X] Custom error types
 
 ### Communication
-- [ ] Controller endpoints
+- [X] Controller endpoints
 - [ ] OpenAPI contracts 
 - [ ] GraphQL contracts for frontend 
 - [ ] gRPC for inter-service communication
@@ -53,8 +53,8 @@ Planned and unplanned features of new service template.
 - [ ] Fake data generator
 
 ### Deployment and hosting
-- [ ] Dockerfile
-- [ ] Docker Compose for local dev and testing
+- [X] Dockerfile
+- [X] Docker Compose for local dev and testing
 - [ ] Easy overview of environment variables
 
 ### Utilities

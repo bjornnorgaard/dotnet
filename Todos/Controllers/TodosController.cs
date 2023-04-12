@@ -1,22 +1,57 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Todos.Features.Todos;
 
 namespace Todos.Controllers;
 
 [ApiController]
 public class TodosController : ControllerBase
 {
-    [HttpGet(Routes.Todos.GetTodo)]
-    public ActionResult<string> GetTodo() => Ok();
+    private readonly IMediator _mediator;
 
-    [HttpGet(Routes.Todos.GetTodos)]
-    public ActionResult<string> GetTodos() => Ok();
+    public TodosController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
 
-    [HttpGet(Routes.Todos.CreateTodo)]
-    public ActionResult<string> CreateTodo() => Ok();
+    [HttpPost(Routes.Todos.GetTodo)]
+    public async Task<GetTodo.Result> GetTodo(
+        [FromBody] GetTodo.Command command,
+        CancellationToken ct)
+    {
+        return await _mediator.Send(command, ct);
+    }
 
-    [HttpGet(Routes.Todos.UpdateTodo)]
-    public ActionResult<string> UpdateTodo() => Ok();
+    [HttpPost(Routes.Todos.GetTodos)]
+    public async Task<GetTodos.Result> GetTodos(
+        [FromBody] GetTodos.Command command,
+        CancellationToken ct)
+    {
+        return await _mediator.Send(command, ct);
+    }
 
-    [HttpGet(Routes.Todos.DeleteTodo)]
-    public ActionResult<string> DeleteTodo() => Ok();
+    [HttpPost(Routes.Todos.CreateTodo)]
+    public async Task<CreateTodo.Result> CreateTodo(
+        [FromBody] CreateTodo.Command command,
+        CancellationToken ct)
+    {
+        return await _mediator.Send(command, ct);
+    }
+
+    [HttpPost(Routes.Todos.UpdateTodo)]
+    public async Task<UpdateTodo.Result> UpdateTodo(
+        [FromBody] UpdateTodo.Command command,
+        CancellationToken ct)
+    {
+        return await _mediator.Send(command, ct);
+    }
+
+    [HttpPost(Routes.Todos.DeleteTodo)]
+    public AcceptedResult DeleteTodo(
+        [FromBody] DeleteTodo.Command command,
+        CancellationToken ct)
+    {
+        _mediator.Send(command, ct);
+        return Accepted();
+    }
 }

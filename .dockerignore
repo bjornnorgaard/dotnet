@@ -1,0 +1,11 @@
+bin
+obj
+out
+Volumes
+*dockerfile
+.gitignore
+.dockerignore
+Dockerfile
+docker-compose.yml
+*.md
+.idea
