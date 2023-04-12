@@ -13,7 +13,7 @@ public static class TodoSortExpressions
             nameof(TodoDto.Id) => todo => todo.Id,
             nameof(TodoDto.Title) => todo => todo.Title,
             nameof(TodoDto.Description) => todo => todo.Description,
-            nameof(TodoDto.IsCompleted) => todo => todo.IsCompleted,
+            nameof(TodoDto.Completed) => todo => todo.Completed,
             _ => todo => todo.Id
         };
     }

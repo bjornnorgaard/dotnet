@@ -11,7 +11,7 @@ public static class TodoMapper
             Id = todo.Id,
             Title = todo.Title,
             Description = todo.Description,
-            IsCompleted = todo.IsCompleted,
+            Completed = todo.Completed,
         };
     }
 

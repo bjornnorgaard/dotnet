@@ -18,7 +18,7 @@ namespace Todos.Database.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Title = table.Column<string>(type: "character varying(25)", maxLength: 25, nullable: false),
                     Description = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
-                    IsCompleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false)
+                    Completed = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {

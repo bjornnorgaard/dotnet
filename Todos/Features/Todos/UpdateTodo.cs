@@ -59,7 +59,7 @@ public class UpdateTodo
                 Id = request.TodoId,
                 Title = request.Title,
                 Description = request.Description,
-                IsCompleted = request.IsCompleted,
+                Completed = request.IsCompleted,
             };
             
             await _todoContext.SaveChangesAsync(ct);

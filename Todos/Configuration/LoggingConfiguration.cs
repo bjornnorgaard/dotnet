@@ -5,7 +5,7 @@ namespace Ant.Platform.Configurations;
 
 public static class LoggingConfiguration
 {
-    public static void AddPlatformLogging(this IServiceCollection services, IConfiguration configuration)
+    public static void AddPlatformLogging(this WebApplicationBuilder builder, IConfiguration configuration)
     {
         Console.WriteLine("Setting up platform logging...");
 
@@ -18,6 +18,8 @@ public static class LoggingConfiguration
             .WriteTo.Console()
             .CreateLogger();
 
+        builder.Host.UseSerilog();
+        
         Log.Information("Logger configured!");
     }
 

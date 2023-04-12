@@ -10,6 +10,6 @@ public class TodoConfiguration : IEntityTypeConfiguration<Models.Todo>
         todo.HasKey(t => t.Id);
         todo.Property(t => t.Title).HasMaxLength(TodoConstants.Title.MaxLength).IsRequired();
         todo.Property(t => t.Description).HasMaxLength(TodoConstants.Description.MaxLength).IsRequired(false);
-        todo.Property(t => t.IsCompleted).HasDefaultValue(false);
+        todo.Property(t => t.Completed).HasDefaultValue(false);
     }
 }

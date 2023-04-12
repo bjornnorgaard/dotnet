@@ -1,16 +1,16 @@
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Swagger;
 using Todos.Options;
 
 namespace Todos.Configuration;
 
 internal static class SwaggerConfiguration
 {
-    internal static void AddPlatformSwagger(this IServiceCollection services, IConfiguration configuration)
+    internal static void AddPlatformSwagger(this WebApplicationBuilder builder, IConfiguration configuration)
     {
         var options = new SwaggerOption(configuration);
-
-        services.AddSwaggerGen(c =>
+        
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen(c =>
         {
             c.CustomSchemaIds(t =>
             {

@@ -12,7 +12,7 @@ using Todos.Database;
 namespace Todos.Database.Migrations
 {
     [DbContext(typeof(TodoContext))]
-    [Migration("20230412025245_Initial")]
+    [Migration("20230412041858_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -31,14 +31,14 @@ namespace Todos.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Description")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<bool>("IsCompleted")
+                    b.Property<bool>("Completed")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("boolean")
                         .HasDefaultValue(false);
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("Title")
                         .IsRequired()
