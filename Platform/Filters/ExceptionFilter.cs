@@ -3,9 +3,10 @@ using FluentValidation.AspNetCore;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Todos.Exceptions;
+using Microsoft.Extensions.Logging;
+using Platform.Exceptions;
 
-namespace Todos.Filters;
+namespace Platform.Filters;
 
 public class ExceptionFilter : IExceptionFilter
 {

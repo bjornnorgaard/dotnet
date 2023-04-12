@@ -1,7 +1,9 @@
-﻿using Serilog;
-using Todos.Options;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Platform.Options;
+using Serilog;
 
-namespace Ant.Platform.Configurations;
+namespace Platform.Configuration;
 
 public static class LoggingConfiguration
 {

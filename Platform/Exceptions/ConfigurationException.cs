@@ -1,4 +1,4 @@
-namespace Todos.Exceptions;
+namespace Platform.Exceptions;
 
 internal class ConfigurationException : Exception
 {

@@ -1,6 +1,6 @@
-using Ant.Platform.Options;
+using Microsoft.Extensions.Configuration;
 
-namespace Todos.Options;
+namespace Platform.Options;
 
 public class SwaggerOption : AbstractOptions
 {
@@ -8,5 +8,5 @@ public class SwaggerOption : AbstractOptions
     {
     }
 
-    public string ApplicationTitle { get; set; }
+    public string ApplicationTitle { get; init; }
 }

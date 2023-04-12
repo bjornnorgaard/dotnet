@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using Todos;
+using Platform;
 using Todos.Database;
 using Todos.Options;
 
-var builder = PlatformExtensions.CreatePlatformBuilder(args);
+var assembly = typeof(Todos.Program).Assembly;
+
+var builder = PlatformExtensions.CreatePlatformBuilder(args, assembly);
 var databaseOption = new DatabaseOption(builder.Configuration);
 builder.Services.AddDbContext<TodoContext>(c => c.UseNpgsql(databaseOption.ConnectionString));
 
@@ -15,6 +17,9 @@ database.Database.Migrate();
 
 app.Run();
 
-public abstract partial class Program
+namespace Todos
 {
+    public abstract partial class Program
+    {
+    }
 }

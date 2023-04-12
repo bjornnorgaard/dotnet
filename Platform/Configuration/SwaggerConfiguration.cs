@@ -1,7 +1,10 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using Todos.Options;
+using Platform.Options;
 
-namespace Todos.Configuration;
+namespace Platform.Configuration;
 
 internal static class SwaggerConfiguration
 {

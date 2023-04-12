@@ -1,19 +1,21 @@
+using System.Reflection;
 using System.Text.Json.Serialization;
-using Ant.Platform.Configurations;
-using Todos.Configuration;
-using Todos.Filters;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Platform.Configuration;
+using Platform.Filters;
 
-namespace Todos;
+namespace Platform;
 
 public static class PlatformExtensions
 {
-    public static WebApplicationBuilder CreatePlatformBuilder(string[] args)
+    public static WebApplicationBuilder CreatePlatformBuilder(string[] args, Assembly assembly)
     {
         var builder = WebApplication.CreateBuilder(args);
 
         builder.AddPlatformLogging(builder.Configuration);
         builder.AddPlatformSwagger(builder.Configuration);
-        builder.AddPlatformMediatr();
+        builder.AddPlatformMediatr(assembly);
 
         builder.Services.AddHealthChecks();
         builder.Services.AddControllers(o => o.Filters.Add<ExceptionFilter>()).AddJsonOptions(o =>

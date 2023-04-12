@@ -1,4 +1,6 @@
-namespace Ant.Platform.Options;
+using Microsoft.Extensions.Configuration;
+
+namespace Platform.Options;
 
 public abstract class AbstractOptions
 {

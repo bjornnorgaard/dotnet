@@ -1,8 +1,9 @@
 using System.Diagnostics;
 using MediatR;
-using Todos.Exceptions;
+using Microsoft.Extensions.Logging;
+using Platform.Exceptions;
 
-namespace Todos.PipelineBehaviors;
+namespace Platform.PipelineBehaviors;
 
 public class LoggingPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>

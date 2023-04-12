@@ -1,6 +1,6 @@
-using Ant.Platform.Options;
+using Microsoft.Extensions.Configuration;
 
-namespace Todos.Options;
+namespace Platform.Options;
 
 public class LoggingOption : AbstractOptions
 {

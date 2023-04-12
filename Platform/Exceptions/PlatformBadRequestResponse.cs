@@ -1,4 +1,4 @@
-namespace Todos.Exceptions;
+namespace Platform.Exceptions;
 
 public class PlatformBadRequestResponse
 {

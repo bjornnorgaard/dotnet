@@ -1,7 +1,8 @@
 using FluentValidation;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
-namespace Todos.PipelineBehaviors;
+namespace Platform.PipelineBehaviors;
 
 public class ValidationPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>

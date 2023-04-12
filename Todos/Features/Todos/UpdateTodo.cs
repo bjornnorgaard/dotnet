@@ -1,9 +1,9 @@
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Platform.Exceptions;
 using Todos.Database;
 using Todos.Database.Models;
-using Todos.Exceptions;
 
 namespace Todos.Features.Todos;
 
