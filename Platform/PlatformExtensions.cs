@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Platform.Configuration;
 using Platform.Filters;
+using Platform.Middleware;
 
 namespace Platform;
 
@@ -31,6 +32,7 @@ public static class PlatformExtensions
         app.UsePlatformLogging(app.Configuration);
         app.UsePlatformSwagger(app.Configuration);
         app.MapControllers();
+        app.UseMiddleware<CorrelationMiddleware>();
         app.UseHealthChecks("/hc");
     }
 }
