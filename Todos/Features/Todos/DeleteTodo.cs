@@ -29,17 +29,17 @@ public class DeleteTodo
         {
             _todoContext = todoContext;
         }
-        
-         public async Task Handle(Command request, CancellationToken ct)
-         {
-             var todo = await _todoContext.Todos.AsTracking()
-                 .Where(t => t.Id == request.TodoId)
-                 .FirstOrDefaultAsync(ct);
 
-             if (todo == null) throw new PlatformException(PlatformError.TodoNotFound);
+        public async Task Handle(Command request, CancellationToken ct)
+        {
+            var todo = await _todoContext.Todos.AsTracking()
+                .Where(t => t.Id == request.TodoId)
+                .FirstOrDefaultAsync(ct);
 
-             _todoContext.Todos.Remove(todo);
-             await _todoContext.SaveChangesAsync(ct);
-         }
+            if (todo == null) throw new PlatformException(PlatformError.TodoNotFound);
+
+            _todoContext.Todos.Remove(todo);
+            await _todoContext.SaveChangesAsync(ct);
+        }
     }
 }

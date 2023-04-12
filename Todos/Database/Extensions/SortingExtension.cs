@@ -22,5 +22,5 @@ public enum SortOrder
 {
     None,
     Desc,
-    Asc,
+    Asc
 }

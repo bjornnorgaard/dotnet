@@ -5,14 +5,14 @@ namespace Todos.Exceptions;
 
 public class PlatformException : Exception
 {
-    private string Error { get; }
-    private PlatformError Code { get; }
-
     public PlatformException(PlatformError error) : base(error.Humanize(LetterCasing.Sentence))
     {
         Code = error;
         Error = base.Message;
     }
+
+    private string Error { get; }
+    private PlatformError Code { get; }
 
     public BadRequestObjectResult ToBadRequestObjectResponse()
     {

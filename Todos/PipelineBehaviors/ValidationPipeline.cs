@@ -6,8 +6,8 @@ namespace Todos.PipelineBehaviors;
 public class ValidationPipeline<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
 {
-    private readonly IValidator<TRequest>? _validator;
     private readonly ILogger<ValidationPipeline<TRequest, TResponse>> _logger;
+    private readonly IValidator<TRequest>? _validator;
 
     public ValidationPipeline(
         ILogger<ValidationPipeline<TRequest, TResponse>> logger,
@@ -17,7 +17,8 @@ public class ValidationPipeline<TRequest, TResponse> : IPipelineBehavior<TReques
         _validator = validator;
     }
 
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
+        CancellationToken cancellationToken)
     {
         if (_validator == null) return await next();
 

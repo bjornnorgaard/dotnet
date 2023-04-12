@@ -45,12 +45,12 @@ public class CreateTodo
             var todo = new Todo
             {
                 Description = request.Description,
-                Title = request.Title,
+                Title = request.Title
             };
 
             await _todoContext.Todos.AddAsync(todo, ct);
             await _todoContext.SaveChangesAsync(ct);
-            
+
             var result = new Result { CreatedId = todo.Id };
             return result;
         }

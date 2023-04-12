@@ -8,21 +8,15 @@ internal static class SwaggerConfiguration
     internal static void AddPlatformSwagger(this WebApplicationBuilder builder, IConfiguration configuration)
     {
         var options = new SwaggerOption(configuration);
-        
+
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(c =>
         {
             c.CustomSchemaIds(t =>
             {
-                if (string.IsNullOrWhiteSpace(t.FullName))
-                {
-                    return t.Name;
-                }
+                if (string.IsNullOrWhiteSpace(t.FullName)) return t.Name;
 
-                if (t.FullName.Contains('+'))
-                {
-                    return t.FullName.Split(".").Last().Replace("+", "");
-                }
+                if (t.FullName.Contains('+')) return t.FullName.Split(".").Last().Replace("+", "");
 
                 return t.Name;
             });

@@ -19,7 +19,7 @@ public static class LoggingConfiguration
             .CreateLogger();
 
         builder.Host.UseSerilog();
-        
+
         Log.Information("Logger configured!");
     }
 

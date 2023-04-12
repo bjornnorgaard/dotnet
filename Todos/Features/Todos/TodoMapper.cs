@@ -2,7 +2,7 @@ using Todos.Database.Models;
 
 namespace Todos.Features.Todos;
 
-public static class TodoMapper 
+public static class TodoMapper
 {
     public static TodoDto ToDto(this Todo todo)
     {
@@ -11,7 +11,7 @@ public static class TodoMapper
             Id = todo.Id,
             Title = todo.Title,
             Description = todo.Description,
-            Completed = todo.Completed,
+            Completed = todo.Completed
         };
     }
 

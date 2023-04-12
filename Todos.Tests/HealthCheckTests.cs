@@ -21,7 +21,7 @@ public class HealthCheckTests : IClassFixture<WebApplicationFactory<Program>>
 
         var response = await client.GetAsync("/hc");
         var content = await response.Content.ReadAsStringAsync();
-    
+
         response.StatusCode.Should().Be(HttpStatusCode.OK);
         content.Should().Be("Healthy");
     }
