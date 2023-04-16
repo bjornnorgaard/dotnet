@@ -13,4 +13,6 @@ RUN dotnet publish Todos/Todos.csproj -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
 COPY --from=build /app/out .
+
+EXPOSE 8080
 ENTRYPOINT [ "dotnet", "Todos.dll" ]
