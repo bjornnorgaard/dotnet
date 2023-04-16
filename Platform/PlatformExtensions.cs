@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Platform.Configuration;
 using Platform.Filters;
 using Platform.Middleware;
+using Serilog;
 
 namespace Platform;
 
@@ -34,5 +35,7 @@ public static class PlatformExtensions
         app.MapControllers();
         app.UseMiddleware<CorrelationMiddleware>();
         app.UseHealthChecks("/hc");
+
+        Log.Information("Successfully started platform");
     }
 }

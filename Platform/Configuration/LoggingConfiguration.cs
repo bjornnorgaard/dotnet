@@ -22,7 +22,7 @@ public static class LoggingConfiguration
 
         builder.Host.UseSerilog();
 
-        Log.Information("Logger configured!");
+        Log.Information("Logger configured");
     }
 
     public static void UsePlatformLogging(this IApplicationBuilder app, IConfiguration configuration)
