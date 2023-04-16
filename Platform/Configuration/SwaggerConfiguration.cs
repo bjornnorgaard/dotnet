@@ -17,9 +17,15 @@ internal static class SwaggerConfiguration
         {
             c.CustomSchemaIds(t =>
             {
-                if (string.IsNullOrWhiteSpace(t.FullName)) return t.Name;
+                if (string.IsNullOrWhiteSpace(t.FullName))
+                {
+                    return t.Name;
+                }
 
-                if (t.FullName.Contains('+')) return t.FullName.Split(".").Last().Replace("+", "");
+                if (t.FullName.Contains('+'))
+                {
+                    return t.FullName.Split(".").Last().Replace("+", "");
+                }
 
                 return t.Name;
             });
