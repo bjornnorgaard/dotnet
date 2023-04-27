@@ -53,7 +53,7 @@ Planned and unplanned features of new service template.
 - [ ] Fake data generator
 
 ### Deployment and hosting
-- [X] Dockerfile
+- [ ] Dockerfile
 - [X] Docker Compose for local dev and testing
 - [ ] Easy overview of environment variables
 
