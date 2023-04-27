@@ -414,6 +414,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+global.json
 
 # Docker
 Volumes
