@@ -9,3 +9,16 @@ services:
       POSTGRES_PASSWORD: "changeme"
     volumes:
       - ./volumes/postgres:/var/lib/postgresql/data
+
+  backend:
+    image: dotnet/backend:latest
+    build:
+      context: .
+    ports:
+      - "6000:5000"
+    environment:
+      DatabaseOptions__ConnectionString: "User ID=postgres;Password=changeme;Host=postgres;Port=5432;Database=postgres;"
+      SwaggerOptions__ApplicationName: "Todos API Docker"
+      LoggingOptions__ApplicationName: "Todos API Docker"
+    depends_on:
+      - postgres

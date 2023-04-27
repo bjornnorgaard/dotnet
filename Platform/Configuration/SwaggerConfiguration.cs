@@ -29,7 +29,7 @@ internal static class SwaggerConfiguration
 
                 return t.Name;
             });
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = options.ApplicationTitle, Version = "v1" });
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = options.ApplicationName, Version = "v1" });
         });
     }
 
@@ -41,7 +41,7 @@ internal static class SwaggerConfiguration
         app.UseSwaggerUI(c =>
         {
             // OpenAPI URL: http://localhost:5001/swagger/v1/swagger.json
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{options.ApplicationTitle} v1");
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{options.ApplicationName} v1");
         });
     }
 }

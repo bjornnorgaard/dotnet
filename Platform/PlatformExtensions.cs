@@ -40,6 +40,6 @@ public static class PlatformExtensions
         app.UseMiddleware<LoggingMiddleware>();
         app.UseHealthChecks("/hc");
         Log.Information("Successfully started platform");
-        Log.Information("Connect to http://localhost:5000");
+        Log.Information("Ready to accept connections");
     }
 }
