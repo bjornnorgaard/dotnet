@@ -6,8 +6,8 @@ using Todos.Options;
 var assembly = typeof(Todos.Program).Assembly;
 
 var builder = PlatformExtensions.CreatePlatformBuilder(args, assembly);
-var databaseOption = new DatabaseOption(builder.Configuration);
-builder.Services.AddDbContext<TodoContext>(c => c.UseNpgsql(databaseOption.ConnectionString));
+var databaseOptions = new DatabaseOptions(builder.Configuration);
+builder.Services.AddDbContext<TodoContext>(c => c.UseNpgsql(databaseOptions.ConnectionString));
 
 var app = builder.Build();
 app.UsePlatformServices();

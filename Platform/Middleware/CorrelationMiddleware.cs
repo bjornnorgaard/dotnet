@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
 namespace Platform.Middleware;
@@ -20,10 +21,10 @@ public class CorrelationMiddleware
 
         context.Request.Headers.TryGetValue(header, out var correlationId);
         if (string.IsNullOrWhiteSpace(correlationId)) correlationId = Guid.NewGuid().ToString();
-
+        
         context.Items.Add("CorrelationId", correlationId);
-        context.Response.Headers.Add(header, correlationId);
-        using var scope = _logger.BeginScope("{CorrelationId}", correlationId);
+        context.Response.Headers.Append(header, correlationId);
+        using var scope = _logger.BeginScope("{CorrelationId}", correlationId!);
             
         await _next.Invoke(context);
     }

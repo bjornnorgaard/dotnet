@@ -11,7 +11,7 @@ public static class LoggingConfiguration
     {
         Console.WriteLine("Setting up platform logging...");
 
-        var options = new LoggingOption(configuration);
+        var options = new LoggingOptions(configuration);
 
         Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(configuration)
