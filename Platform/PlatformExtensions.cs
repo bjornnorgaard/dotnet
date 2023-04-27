@@ -37,6 +37,7 @@ public static class PlatformExtensions
         app.UsePlatformCors(app.Configuration);
         app.MapControllers();
         app.UseMiddleware<CorrelationMiddleware>();
+        app.UseMiddleware<LoggingMiddleware>();
         app.UseHealthChecks("/hc");
         Log.Information("Successfully started platform");
         Log.Information("Connect to http://localhost:5000");

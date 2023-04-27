@@ -5,7 +5,7 @@ Service template for .NET services.
 Planned and unplanned features of new service template.
 
 ### Diagnostics and logging
-- [ ] Logging middleware
+- [x] Logging middleware
 - [X] Strongly typed configuration
 - [x] Configuration validation on startup (compile time maybe?)
 - [X] Bind configuration by options
