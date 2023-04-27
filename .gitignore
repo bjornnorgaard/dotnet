@@ -417,4 +417,4 @@ FodyWeavers.xsd
 global.json
 
 # Docker
-Volumes
+volumes

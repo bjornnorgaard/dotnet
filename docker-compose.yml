@@ -1,20 +1,6 @@
 version: '3.8'
 
 services:
-  todos:
-    image: dotnet/todos
-    build:
-      context: .
-    ports:
-      - "6001:8080"
-    environment:
-      ASPNETCORE_ENVIRONMENT: "Development"
-      DatabaseOption__ConnectionString: "User ID=postgres;Password=changeme;Host=postgres;Port=5432;Database=postgres;"
-      SwaggerOption__ApplicationTitle: "Todos API Docker"
-      LoggingOption__ApplicationName: "Todos API Docker"
-    depends_on:
-      - postgres
-
   postgres:
     image: postgres
     ports:
@@ -22,4 +8,4 @@ services:
     environment:
       POSTGRES_PASSWORD: "changeme"
     volumes:
-      - ./Volumes/postgres:/var/lib/postgresql/data
+      - ./volumes/postgres:/var/lib/postgresql/data
