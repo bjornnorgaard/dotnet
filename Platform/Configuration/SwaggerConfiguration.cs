@@ -40,7 +40,7 @@ internal static class SwaggerConfiguration
         app.UseSwagger();
         app.UseSwaggerUI(c =>
         {
-            // OpenAPI URL: http://localhost:5001/swagger/v1/swagger.json
+            // OpenAPI URL: http://localhost:5000/swagger/v1/swagger.json
             c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{options.ApplicationName} v1");
         });
     }

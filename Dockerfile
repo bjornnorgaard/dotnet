@@ -13,6 +13,5 @@ RUN dotnet publish Todos/Todos.csproj -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview AS runtime
 WORKDIR /app
-EXPOSE 5000
 COPY --from=build /app/out .
 ENTRYPOINT [ "dotnet", "Todos.dll" ]
