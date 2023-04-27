@@ -7,10 +7,10 @@ Planned and unplanned features of new service template.
 ### Diagnostics and logging
 - [ ] Logging middleware
 - [X] Strongly typed configuration
-- [ ] Configuration validation on startup (compile time maybe?)
+- [x] Configuration validation on startup (compile time maybe?)
 - [X] Bind configuration by options
-- [ ] Automatic correlation IDs on incoming
-- [ ] CORS setup
+- [x] Automatic correlation IDs on incoming
+- [x] CORS setup
 - [ ] Elastic stack setup
 - [ ] Sample benchmark setup
 - [ ] Test datadog
@@ -60,4 +60,3 @@ Planned and unplanned features of new service template.
 ### Utilities
 - [ ] In-memory cache available 
 - [ ] EF supported sorting by request
-- [ ] Mapper lib? Consider usage

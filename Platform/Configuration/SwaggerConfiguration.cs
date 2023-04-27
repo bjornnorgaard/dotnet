@@ -10,7 +10,7 @@ internal static class SwaggerConfiguration
 {
     internal static void AddPlatformSwagger(this WebApplicationBuilder builder, IConfiguration configuration)
     {
-        var options = new SwaggerOption(configuration);
+        var options = new SwaggerOptions(configuration);
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(c =>
@@ -35,7 +35,7 @@ internal static class SwaggerConfiguration
 
     internal static void UsePlatformSwagger(this IApplicationBuilder app, IConfiguration configuration)
     {
-        var options = new SwaggerOption(configuration);
+        var options = new SwaggerOptions(configuration);
 
         app.UseSwagger();
         app.UseSwaggerUI(c =>

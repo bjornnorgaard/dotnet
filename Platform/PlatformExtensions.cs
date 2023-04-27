@@ -14,11 +14,13 @@ public static class PlatformExtensions
     public static WebApplicationBuilder CreatePlatformBuilder(string[] args, Assembly assembly)
     {
         var builder = WebApplication.CreateBuilder(args);
-
+        builder.Configuration.ValidatePlatformConfiguration();
+        
         builder.AddPlatformLogging(builder.Configuration);
         builder.AddPlatformSwagger(builder.Configuration);
+        builder.AddPlatformCors(builder.Configuration);
         builder.AddPlatformMediatr(assembly);
-
+        
         builder.Services.AddHealthChecks();
         builder.Services.AddControllers(o => o.Filters.Add<ExceptionFilter>()).AddJsonOptions(o =>
         {
@@ -32,10 +34,11 @@ public static class PlatformExtensions
     {
         app.UsePlatformLogging(app.Configuration);
         app.UsePlatformSwagger(app.Configuration);
+        app.UsePlatformCors(app.Configuration);
         app.MapControllers();
         app.UseMiddleware<CorrelationMiddleware>();
         app.UseHealthChecks("/hc");
-
         Log.Information("Successfully started platform");
+        Log.Information("Connect to http://localhost:5000");
     }
 }
