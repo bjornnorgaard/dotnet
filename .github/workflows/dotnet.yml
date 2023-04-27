@@ -12,8 +12,15 @@ on:
 jobs:
   build:
     name: Build
-
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        ports:
+          - "5432:5432"
+        environment:
+          POSTGRES_PASSWORD: "changeme"
 
     steps:
     - uses: actions/checkout@v3
