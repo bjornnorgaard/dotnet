@@ -5,12 +5,10 @@ namespace Todos.Database;
 
 public class TodoContext : DbContext
 {
-    public TodoContext(DbContextOptions options) : base(options)
-    {
-    }
-
     public DbSet<Todo> Todos { get; set; }
-
+    
+    public TodoContext(DbContextOptions options) : base(options) { }
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
