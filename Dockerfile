@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0-preview AS build
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
 
 COPY *.sln ./
@@ -11,7 +11,7 @@ COPY . .
 RUN dotnet build
 RUN dotnet publish Todos/Todos.csproj -c Release -o out
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0-preview AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/out .
 ENTRYPOINT [ "dotnet", "Todos.dll" ]
