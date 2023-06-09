@@ -14,7 +14,7 @@ public class HealthCheckTests : IClassFixture<WebApplicationFactory<Program>>
         _factory = factory;
     }
 
-    /*[Fact]
+    [Fact]
     public async Task ReturnsOkAndHealthy()
     {
         var client = _factory.CreateClient();
@@ -24,5 +24,5 @@ public class HealthCheckTests : IClassFixture<WebApplicationFactory<Program>>
 
         response.StatusCode.Should().Be(HttpStatusCode.OK);
         content.Should().Be("Healthy");
-    }*/
+    }
 }
