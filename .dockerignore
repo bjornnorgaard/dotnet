@@ -1,7 +1,7 @@
 bin
 obj
 out
-Volumes
+volumes
 *dockerfile
 .gitignore
 .dockerignore
@@ -9,3 +9,4 @@ Dockerfile
 docker-compose.yml
 *.md
 .idea
+.github
