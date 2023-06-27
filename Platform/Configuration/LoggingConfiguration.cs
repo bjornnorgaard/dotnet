@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Platform.Options;
+using Prometheus;
 using Serilog;
 
 namespace Platform.Configuration;
@@ -13,10 +14,13 @@ public static class LoggingConfiguration
 
         var options = new LoggingOptions(configuration);
 
+        var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+        if (env == null) throw new ArgumentNullException(nameof(env), "was null");
+        
         Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(configuration)
             .Enrich.WithProperty("Application", options.ApplicationName)
-            .Enrich.WithProperty("Environment", Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"))
+            .Enrich.WithProperty("Environment", env)
             .WriteTo.Console()
             .CreateLogger();
 
@@ -27,6 +31,8 @@ public static class LoggingConfiguration
 
     public static void UsePlatformLogging(this IApplicationBuilder app, IConfiguration configuration)
     {
+        app.UseHttpMetrics();
+        app.UseMetricServer();
         app.UseSerilogRequestLogging();
     }
 }

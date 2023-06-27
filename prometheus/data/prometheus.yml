@@ -1,8 +1,9 @@
 global:
+  scrape_interval: 15s
 scrape_configs:
   - job_name: services
     static_configs:
       - targets:
-          - "backend:6001"
+          - "backend:80"
           - "localhost:9090"
           - "postgres-exporter:9187"

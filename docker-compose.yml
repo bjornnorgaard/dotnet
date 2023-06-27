@@ -9,6 +9,7 @@ services:
     ports:
       - 6001:80
     environment:
+      ASPNETCORE_ENVIRONMENT: "Docker"
       DatabaseOptions__ConnectionString: "User ID=postgres;Password=changeme;Host=postgres;Port=5432;Database=postgres;"
       SwaggerOptions__ApplicationName: "Todos API Docker"
       LoggingOptions__ApplicationName: "Todos API Docker"
