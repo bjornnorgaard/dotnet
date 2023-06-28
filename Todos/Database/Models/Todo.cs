@@ -6,4 +6,6 @@ public class Todo
     public required string Title { get; set; }
     public required string Description { get; set; }
     public bool Completed { get; set; }
+    public AppUser? CretedByUser { get; set; }
+    public string? CretedByUserId { get; set; }
 }

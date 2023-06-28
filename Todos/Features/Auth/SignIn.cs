@@ -6,7 +6,7 @@ using Todos.Database.Models;
 
 namespace Todos.Features.Todos;
 
-public class CreateTodo
+public class SignIn
 {
     public class Command : IRequest<Result>
     {

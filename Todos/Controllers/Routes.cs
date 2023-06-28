@@ -13,4 +13,11 @@ public static class Routes
         public const string UpdateTodo = $"{Base}/update-todo";
         public const string DeleteTodo = $"{Base}/delete-todo";
     }
+
+    public static class Auth
+    {
+        public const string Base = $"{Api}auth";
+        public const string SignIn = $"{Base}/sign-in";
+        public const string SignUp = $"{Base}/sign-up";
+    }
 }

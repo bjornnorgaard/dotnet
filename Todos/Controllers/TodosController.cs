@@ -35,6 +35,7 @@ public class TodosController : ControllerBase
         [FromBody] CreateTodo.Command command,
         CancellationToken ct)
     {
+        command.User = User?.Identity?.Name;
         return await _mediator.Send(command, ct);
     }
 

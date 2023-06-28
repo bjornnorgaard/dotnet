@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Todos.Database.Models;
 
 namespace Todos.Database;
 
-public class TodoContext : DbContext
+public class TodoContext : IdentityDbContext<AppUser>
 {
     public DbSet<Todo> Todos { get; set; }
     
