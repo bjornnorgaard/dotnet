@@ -2,6 +2,7 @@ using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Platform.Exceptions;
+using System.Text.Json.Serialization;
 using Todos.Database.Models;
 using Todos.Features.Todos;
 
@@ -14,13 +15,15 @@ public class SignUp
         public required string Username { get; init; }
         public required string Email { get; init; }
         public required string PhoneNumber { get; init; }
+        [JsonIgnore]
         public required string Password { get; init; }
+        [JsonIgnore]
         public required string ConfirmPassword { get; init; }
     }
 
     public class Result
     {
-        public required AuthDto Auth { get; set; }
+        public required string Jwt { get; set; }
     }
 
     public class Validator : AbstractValidator<Command>
@@ -50,30 +53,39 @@ public class SignUp
 
         public async Task<Result> Handle(Command request, CancellationToken ct)
         {
-            if (await UserExcist(request))
+            var command = new Command
+            {
+                Username = request.Username.Trim(),
+                Email = request.Email.Trim().ToLower(),
+                PhoneNumber = request.PhoneNumber.Trim(),
+                Password = request.Password.Trim(),
+                ConfirmPassword = request.ConfirmPassword.Trim(),
+            };
+
+            if (await UserExcist(command))
             {
                 throw new PlatformException(PlatformError.SignUpExcist);
             }
 
             var appUser = new AppUser
             {
-                UserName = request.Username,
-                Email = request.Email,
-                PhoneNumber = request.PhoneNumber,
+                UserName = command.Username,
+                Email = command.Email,
+                PhoneNumber = command.PhoneNumber,
             };
 
-            var identity = await _userManager.CreateAsync(appUser, request.Password);
+            var identity = await _userManager.CreateAsync(appUser, command.Password);
 
             if (!identity.Succeeded)
             {
-                _logger.LogError("Create Idendity Error {Errors}", identity.Errors);
+                _logger.LogError("Create Idendity Error {Error} {Errors}", identity.ToString(), identity.Errors);
                 // TODO: return errors to user
                 throw new PlatformException(PlatformError.SignUpError);
             }
 
             var token = _jwtService.GenerateJWTToken(appUser);
 
-            return new Result { Auth = new AuthDto { Jwt = token } };
+            return new Result { Jwt = token };
         }
 
         private async Task<bool> UserExcist(Command request)

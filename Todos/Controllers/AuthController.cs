@@ -25,12 +25,12 @@ public class AuthController : ControllerBase
         return await _mediator.Send(command, ct);
     }
 
-    //[AllowAnonymous]
-    //[HttpPost(Routes.Auth.SignIn)]
-    //public async Task<SignIn.Result> SignIn(
-    //    [FromBody] SignIn.Command command,
-    //    CancellationToken ct)
-    //{
-    //    return await _mediator.Send(command, ct);
-    //}
+    [AllowAnonymous]
+    [HttpPost(Routes.Auth.SignIn)]
+    public async Task<SignIn.Result> SignIn(
+        [FromBody] SignIn.Command command,
+        CancellationToken ct)
+    {
+        return await _mediator.Send(command, ct);
+    }
 }

@@ -19,21 +19,26 @@ namespace Todos.Features.Auth
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.Secret));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-            var expires = DateTime.Now.AddHours(4);
-            var expiresTicks = expires.Ticks.ToString();
+            
             var issuedAt = DateTime.Now;
             var issuedAtTicks = issuedAt.Ticks.ToString();
+
+            var expires = issuedAt.AddHours(8);
+            var expiresTicks = expires.Ticks.ToString();
+
             var issuer = _jwtOptions.Issuer;
             var audience = _jwtOptions.Audience;
-            var claims = new List<Claim>();
-            claims.Add(new Claim(JwtRegisteredClaimNames.Sid, user.Id));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Sub, user.Id));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Name, user.UserName!));
-            claims.Add(new Claim(JwtRegisteredClaimNames.NameId, user.Id + user.UserName));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email!));
-            //claims.Add(new Claim(JwtRegisteredClaimNames.Iss, issuer));
-            claims.Add(new Claim($"{JwtRegisteredClaimNames.Exp}2", expiresTicks));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Iat, issuedAtTicks));
+            var claims = new List<Claim>
+            {
+                new Claim(JwtRegisteredClaimNames.Sid, user.Id),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+                new Claim(JwtRegisteredClaimNames.Name, user.UserName!),
+                new Claim(JwtRegisteredClaimNames.NameId, user.Id + user.UserName),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email!),
+                new Claim(JwtRegisteredClaimNames.Iss, issuer),
+                new Claim($"{JwtRegisteredClaimNames.Exp}2", expiresTicks),
+                new Claim(JwtRegisteredClaimNames.Iat, issuedAtTicks)
+            };
             var token = new JwtSecurityToken(issuer, audience, claims: claims, issuedAt, expires: expires, signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
