@@ -15,7 +15,7 @@ public static class LoggingConfiguration
         var options = new LoggingOptions(configuration);
 
         var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-        if (env == null) throw new ArgumentNullException(nameof(env), "was null");
+        if (env == null) env = "Development";
         
         Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(configuration)
