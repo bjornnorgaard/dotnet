@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: ".NET Build"
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -33,3 +33,12 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
+  docker:
+    name: "Docker Build"
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: docker build -f Dockerfile --tag dotnet/backend:ci-$(date +%s) .
