@@ -12,3 +12,12 @@ updates:
       interval: "daily"
       time: "23:00"
       timezone: "Europe/Copenhagen"
+    groups:
+      small-updates:
+        update-types:
+          - "patch"
+          - "minor"
+      major-updates:
+        update-types:
+          - "major"
+          
