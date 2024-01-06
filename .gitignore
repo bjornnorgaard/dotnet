@@ -1,19 +1,11 @@
-﻿### VisualStudioCode template
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
+### DotnetCore template
+# .NET Core build folders
+bin/
+obj/
 
-# Local History for Visual Studio Code
-.history/
-
-# Built Visual Studio Code Extensions
-*.vsix
-
-# JetBrains stuff
-.idea
+# Common node modules locations
+/node_modules
+/wwwroot/node_modules
 
 ### VisualStudio template
 ## Ignore Visual Studio temporary files, build results, and
@@ -414,7 +406,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-global.json
 
-# Docker
-volumes
+# Editors
+.idea
+.vscode
