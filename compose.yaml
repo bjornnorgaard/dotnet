@@ -1,0 +1,11 @@
+services:
+  server:
+    image: dotnet/server:latest
+    build:
+      context: src
+      dockerfile: server/Dockerfile
+    ports:
+      - "8080:5196"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_HTTP_PORTS: "5196"

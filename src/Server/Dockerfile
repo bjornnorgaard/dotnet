@@ -1,23 +1,17 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER $APP_UID
+﻿FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG BUILD_CONFIGURATION=Release
-WORKDIR /src
-COPY ["Server/Server.csproj", "Server/"]
-RUN dotnet restore "Server/Server.csproj"
+COPY *.sln ./
+COPY */*.csproj ./
+
+RUN for file in $(ls *.csproj); do mkdir -p ${file%.*}/ && mv $file ${file%.*}/; done
+RUN dotnet restore
+
 COPY . .
-WORKDIR "/src/Server"
-RUN dotnet build "Server.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build
+RUN dotnet publish Server/Server.csproj -c Release -o out
 
-FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "Server.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
-
-FROM base AS final
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Server.dll"]
+COPY --from=build /app/out .
+ENTRYPOINT [ "dotnet", "Server.dll" ]
