@@ -1,4 +1,4 @@
-### DotnetCore template
+﻿### DotnetCore template
 # .NET Core build folders
 bin/
 obj/
@@ -403,6 +403,9 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Out
+out/
 
 # JetBrains Rider
 *.sln.iml
