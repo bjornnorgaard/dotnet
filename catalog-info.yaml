@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: dotnet
+  annotations:
+    github.com/project-slug: bjornnorgaard/dotnet
+spec:
+  type: other
+  lifecycle: unknown
+  owner: "@bjornnorgaard"
